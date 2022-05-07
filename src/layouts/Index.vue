@@ -1,9 +1,6 @@
 <template>
-  <el-container class="layout-container-demo" style="height: 500px">
-    <el-aside>
-      <router-link to="/">Go to Home</router-link>
-      <router-link to="/about">Go to About</router-link>
-    </el-aside>
+  <el-container class="layout-container">
+    <AsideBar />
     <el-container>
       <el-header>header</el-header>
       <el-main>
@@ -15,8 +12,12 @@
   </el-container>
 </template>
 
-<script>
+<script setup>
+import AsideBar from "./AsideBar.vue";
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.layout-container {
+  min-height: 100vh;
+}
 </style>

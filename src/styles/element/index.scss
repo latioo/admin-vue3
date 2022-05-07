@@ -32,3 +32,7 @@ $--colors: (
 
 // You can comment it to hide debug info.
 // @debug $--colors;
+
+.el-menu {
+  border-right: unset;
+}
