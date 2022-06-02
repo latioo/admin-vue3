@@ -1,23 +1,26 @@
 <template>
-  <el-container class="layout-container">
+  <a-layout style="min-height: 100vh">
     <AsideBar />
-    <el-container>
-      <el-header>header</el-header>
-      <el-main>
-        <el-scrollbar>
-          <router-view></router-view>
-        </el-scrollbar>
-      </el-main>
-    </el-container>
-  </el-container>
+    <a-layout>
+      <HeaderX />
+      <a-layout-content
+        :style="{
+          margin: '24px 16px',
+          padding: '24px',
+          background: '#fff',
+          minHeight: '280px',
+        }"
+      >
+        <router-view></router-view>
+      </a-layout-content>
+    </a-layout>
+    <Setting />
+  </a-layout>
 </template>
 
 <script setup>
-import AsideBar from "./AsideBar.vue";
+import AsideBar from './AsideBar.vue'
+import HeaderX from './HeaderX.vue'
+import Setting from './Setting.vue'
 </script>
-
-<style lang="scss" scoped>
-.layout-container {
-  min-height: 100vh;
-}
-</style>
+<style></style>

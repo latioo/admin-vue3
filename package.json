@@ -8,8 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^1.1.4",
-    "element-plus": "^2.1.11",
+    "ant-design-vue": "^3.2.3",
     "ramda": "^0.28.0",
     "sass": "^1.50.1",
     "vue": "^3.2.25",

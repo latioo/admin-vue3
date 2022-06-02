@@ -24,3 +24,9 @@ console.log 报 console undefined, 改为 window.console.log 可用
 
 过一会儿直接写 console.log 又可用了 ???
 ```
+
+```
+element+ 切换到 antd-v
+主要原因: 目前UI是参照基于antd-v制作的模板
+次要原因: 关于drawer组件, element中内容在mask下, 而antd中内容和mask同级, 感觉antd的设计更优
+```
