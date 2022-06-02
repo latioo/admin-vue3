@@ -1,5 +1,5 @@
 <template>
-  <a-layout style="min-height: 100vh">
+  <a-layout style="min-height: 100vh" has-sider>
     <AsideBar />
     <a-layout>
       <HeaderX />
@@ -23,4 +23,3 @@ import AsideBar from './AsideBar.vue'
 import HeaderX from './HeaderX.vue'
 import Setting from './Setting.vue'
 </script>
-<style></style>

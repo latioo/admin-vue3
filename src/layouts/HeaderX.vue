@@ -6,23 +6,21 @@
       :style="{ position: 'fixed', zIndex: 1, width: '100%' }"
     >
       <MenuUnfoldOutlined
-        v-if="collapsed"
+        v-if="menuCollapsed"
         class="trigger"
-        @click="collapsed = !collapsed"
+        @click="toggle"
       />
-      <MenuFoldOutlined
-        v-else
-        class="trigger"
-        @click="collapsed = !collapsed"
-      />
+      <MenuFoldOutlined v-else class="trigger" @click="toggle" />
     </a-layout-header>
   </div>
 </template>
 
 <script setup>
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue'
-import { ref } from 'vue'
-const collapsed = ref(false)
+import { useVuex } from '@/util/vuex.js'
+const { state, commit } = useVuex('layout')
+const menuCollapsed = state('menuCollapsed')
+const toggle = () => commit('toggleMenuCollapsed')
 </script>
 
 <style lang="scss" scoped>

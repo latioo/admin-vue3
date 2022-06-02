@@ -2,7 +2,10 @@
   <div>
     <div
       class="fixed-stuff"
-      :style="{ width: `${collapsed ? '80' : '200'}px`, overflow: 'hidden' }"
+      :style="{
+        width: `${menuCollapsed ? '80' : '200'}px`,
+        overflow: 'hidden',
+      }"
     ></div>
     <a-layout-sider
       class="layout-sider-cus"
@@ -14,7 +17,7 @@
         top: 0,
         bottom: 0,
       }"
-      v-model:collapsed="collapsed"
+      :collapsed="menuCollapsed"
       :trigger="null"
       collapsible
     >
@@ -57,9 +60,11 @@ import {
   VideoCameraOutlined,
   UploadOutlined,
 } from '@ant-design/icons-vue'
-defineProps({
-  collapsed: Boolean,
-})
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+const store = useStore()
+const menuCollapsed = computed(() => store.state.layout.menuCollapsed)
+
 const selectedKeys = ref(['1'])
 const toMuchMenusFortest = Array(11)
   .fill(null)
