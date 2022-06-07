@@ -3,7 +3,7 @@
     <div
       class="fixed-stuff"
       :style="{
-        width: `${menuCollapsed ? '80' : '200'}px`,
+        width: menuCollapsed ? collapsedWidth : width,
         overflow: 'hidden',
       }"
     ></div>
@@ -17,23 +17,26 @@
         top: 0,
         bottom: 0,
       }"
+      :collapsedWidth="collapsedWidth"
+      :width="width"
       :collapsed="menuCollapsed"
       :trigger="null"
       collapsible
     >
       <div class="logo">logo</div>
       <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
+        <a-menu-item
+          v-for="item in router.options.routes"
+          :index="item.path"
+          :key="item.path"
+          @click="this.$router.push(item.path)"
+        >
+          <component :is="item.icon"></component>
+          <span>{{ item.name }}</span>
+        </a-menu-item>
         <a-menu-item key="1" @click="this.$router.push('/')">
           <UserOutlined />
           <span>home</span>
-        </a-menu-item>
-        <a-menu-item key="2" @click="this.$router.push('/page1')">
-          <VideoCameraOutlined />
-          <span>page1</span>
-        </a-menu-item>
-        <a-menu-item key="3" @click="this.$router.push('/page2')">
-          <UploadOutlined />
-          <span>page2</span>
         </a-menu-item>
         <a-sub-menu key="sub1">
           <template #icon>
@@ -44,6 +47,7 @@
             v-for="item in toMuchMenusFortest"
             :index="item"
             :key="item"
+            @click="this.$router.push('Option' + item)"
           >
             {{ 'Option ' + item }}
           </a-menu-item>
@@ -54,21 +58,29 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import {
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-} from '@ant-design/icons-vue'
+import { ref, watch } from 'vue'
+import { UserOutlined, UploadOutlined } from '@ant-design/icons-vue'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import { router } from '../router'
+import { useRouter, useRoute } from 'vue-router'
+const [width, collapsedWidth] = ['208px', '48px']
+
+//
 const store = useStore()
 const menuCollapsed = computed(() => store.state.layout.menuCollapsed)
+const selectedKeys = ref([])
+const route = useRoute()
+watch(route, () => {
+  const { path, name } = route
+  selectedKeys.value = [path]
+})
 
-const selectedKeys = ref(['1'])
+//
 const toMuchMenusFortest = Array(11)
   .fill(null)
   .map((_, i) => 'test' + i)
+console.log({ router, options: router.options.routes })
 </script>
 
 <style lang="scss" scoped>

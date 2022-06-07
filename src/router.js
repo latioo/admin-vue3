@@ -8,6 +8,8 @@ export const router = createRouter({
     routes: [
         {
             path: '/',
+            name: '主页',
+            icon: 'UserOutlined',
             // a single route can define multiple named components
             // which will be rendered into <router-view>s with corresponding names.
             components: {
@@ -16,12 +18,16 @@ export const router = createRouter({
         },
         {
             path: '/page1',
+            name: '页1',
+            icon: 'VideoCameraOutlined',
             components: {
                 default: Page1
             },
         },
         {
             path: '/page2',
+            name: '页2',
+            icon: 'upload-outlined',
             components: {
                 default: Page2
             },
