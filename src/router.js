@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router
 import Page1 from './views/Page1.vue'
 import Home from './views/Home.vue'
 import Page2 from './views/Page2.vue'
-import VuexForm from './views/_dev/VuexForm.vue'
+import TestForm from './views/_dev/TestForm.vue'
 
 const routes = [
     {
@@ -33,11 +33,11 @@ const routes = [
     },
 ]
 const devRoutes = [{
-    path: '/vuex-form',
-    name: 'Vuex表单处理',
+    path: '/store-form',
+    name: 'store 表单处理',
     icon: 'form-outlined',
     components: {
-        default: VuexForm
+        default: TestForm
     },
 }]
 

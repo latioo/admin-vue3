@@ -60,15 +60,13 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { UserOutlined, UploadOutlined } from '@ant-design/icons-vue'
-import { computed } from 'vue'
-import { useStore } from 'vuex'
 import { router } from '../router'
-import { useRouter, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
+import { useStoreRefs } from '../store/layout'
 const [width, collapsedWidth] = ['208px', '48px']
 
 //
-const store = useStore()
-const menuCollapsed = computed(() => store.state.layout.menuCollapsed)
+const { menuCollapsed } = useStoreRefs()
 const selectedKeys = ref([])
 const route = useRoute()
 watch(route, () => {

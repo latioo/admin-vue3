@@ -17,10 +17,9 @@
 
 <script setup>
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue'
-import { useVuex } from '@/util/vuex.js'
-const { stateRefs, commit } = useVuex('layout')
-const { menuCollapsed } = stateRefs
-const toggle = () => commit('toggleMenuCollapsed')
+import { useStoreRefs, useStore } from '../store/layout'
+const { menuCollapsed } = useStoreRefs()
+const toggle = useStore().toggleMenuCollapsed
 </script>
 
 <style lang="scss" scoped>

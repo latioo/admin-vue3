@@ -20,17 +20,16 @@
 <script setup>
 import { watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useVuex } from '@/util/vuex.js'
 import { findIndex, propEq } from 'ramda'
-const { commit, stateRefs } = useVuex('layout')
-//
-const { tabs, activeTab } = stateRefs
+import { useStoreRefs, useStore } from '../store/layout'
+const { tabs, activeTab } = useStoreRefs()
+const { addTab, delTab } = useStore()
 
 const router = useRouter()
 const route = useRoute()
 watch(route, () => {
   const { path, name } = route
-  commit('addTab', { path, name })
+  addTab({ path, name })
 })
 
 const onEdit = (targetKey, action) => {
@@ -38,12 +37,12 @@ const onEdit = (targetKey, action) => {
     const index = findIndex(propEq('path', targetKey), tabs.value)
     if (index < 0) return
     if (targetKey == activeTab.value && tabs.value.length > 1) {
-      // 关闭选中的tab后, 依次尝试选中右/左侧的tab (同浏览器)
+      // 关闭选中的tab后, 依次尝试选中右/左侧的tab
       if (index < tabs.value.length - 1) router.push(tabs.value[index + 1].path)
       if (index == tabs.value.length - 1)
         router.push(tabs.value[index - 1].path)
     }
-    commit('delTab', targetKey)
+    delTab(targetKey)
     // 关掉最后一个tab, 这里可以选择去主页, 或者啥也不做
     if (tabs.value.length <= 0) router.push('/')
   }
