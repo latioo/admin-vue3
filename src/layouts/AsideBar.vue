@@ -34,10 +34,6 @@
           <component :is="item.icon"></component>
           <span>{{ item.name }}</span>
         </a-menu-item>
-        <a-menu-item key="1" @click="this.$router.push('/')">
-          <UserOutlined />
-          <span>home</span>
-        </a-menu-item>
         <a-sub-menu key="sub1">
           <template #icon>
             <UploadOutlined />
@@ -59,7 +55,7 @@
 
 <script setup>
 import { ref, watch } from 'vue'
-import { UserOutlined, UploadOutlined } from '@ant-design/icons-vue'
+import { UploadOutlined } from '@ant-design/icons-vue'
 import { router } from '../router'
 import { useRoute } from 'vue-router'
 import { useStoreRefs } from '../store/layout'
@@ -67,10 +63,11 @@ const [width, collapsedWidth] = ['208px', '48px']
 
 //
 const { menuCollapsed } = useStoreRefs()
-const selectedKeys = ref([])
+const selectedKeys = ref(['/'])
 const route = useRoute()
 watch(route, () => {
   const { path, name } = route
+  console.log(route)
   selectedKeys.value = [path]
 })
 
@@ -78,7 +75,7 @@ watch(route, () => {
 const toMuchMenusFortest = Array(11)
   .fill(null)
   .map((_, i) => 'test' + i)
-console.log({ router, options: router.options.routes })
+console.log({ router, route, options: router.options.routes })
 </script>
 
 <style lang="scss" scoped>

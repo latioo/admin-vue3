@@ -1,11 +1,11 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import Layout from '@/layouts/Index.vue'
-</script>
-
 <template>
-  <Layout />
+  <Layout v-if="!route.meta.noLayout" />
+  <router-view v-if="route.meta.noLayout"></router-view>
 </template>
 
-<style></style>
+<script setup>
+import Layout from './layouts/Index.vue'
+import { useRoute } from 'vue-router'
+const route = useRoute()
+console.log({ route })
+</script>

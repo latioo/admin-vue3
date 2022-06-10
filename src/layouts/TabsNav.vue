@@ -27,6 +27,9 @@ const { addTab, delTab } = useStore()
 
 const router = useRouter()
 const route = useRoute()
+console.log({ tabs: tabs.value })
+
+console.error('应该监听菜单或者啥,而不是route')
 watch(route, () => {
   const { path, name } = route
   addTab({ path, name })
