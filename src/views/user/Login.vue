@@ -84,7 +84,9 @@ const onFinish = (values) => {
   console.log('Success:', values)
   loading.value = true
   setTimeout(() => {
-    router.push('/')
+    router.replace('/', (x) => {
+      console.log({ x })
+    })
   }, 500)
 }
 

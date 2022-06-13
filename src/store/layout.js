@@ -5,9 +5,10 @@ export const useStore = defineStore('layout', {
         return {
             // 菜单
             menuCollapsed: false, // collapsed 坍塌
+            selectedKeys: [],
             // tabs导航
             tabs: [],
-            activeTab: '/', // 这里和菜单区分开, 因为 tabs 和菜单可能不一致; 比如 :id 这种路由, 
+            activeTab: '', // 这里和菜单区分开, 因为 tabs 和菜单可能不一致; 比如 :id 这种路由, 
         }
     },
     actions: {

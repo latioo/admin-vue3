@@ -7,5 +7,5 @@
 import Layout from './layouts/Index.vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
-console.log({ route })
+// console.log({ route })
 </script>

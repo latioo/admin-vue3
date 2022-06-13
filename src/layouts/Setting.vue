@@ -33,7 +33,7 @@ const isFirstLoad = ref(true)
 setTimeout(() => {
   showDrawer.value = false
   isFirstLoad.value = false
-  console.log('Drawer 只加载一次')
+  // console.log('Drawer 只加载一次')
 }, 0)
 const toggleDrawer = () => {
   showDrawer.value = !showDrawer.value

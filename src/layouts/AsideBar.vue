@@ -24,9 +24,14 @@
       collapsible
     >
       <div class="logo">logo</div>
-      <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
+      <a-menu
+        :selectedKeys="selectedKeys"
+        :selectable="false"
+        theme="dark"
+        mode="inline"
+      >
         <a-menu-item
-          v-for="item in router.options.routes"
+          v-for="item in routes"
           :index="item.path"
           :key="item.path"
           @click="this.$router.push(item.path)"
@@ -54,28 +59,28 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { watch, onUnmounted } from 'vue'
 import { UploadOutlined } from '@ant-design/icons-vue'
-import { router } from '../router'
-import { useRoute } from 'vue-router'
+import { routes } from '../router'
+import { useRouter } from 'vue-router'
 import { useStoreRefs } from '../store/layout'
 const [width, collapsedWidth] = ['208px', '48px']
 
 //
-const { menuCollapsed } = useStoreRefs()
-const selectedKeys = ref(['/'])
-const route = useRoute()
-watch(route, () => {
-  const { path, name } = route
-  console.log(route)
+const { menuCollapsed, selectedKeys } = useStoreRefs()
+const router = useRouter()
+
+selectedKeys.value = ['/']
+const beforeResolve = router.beforeResolve((route) => {
+  // console.log({ route })
+  const { path } = route
   selectedKeys.value = [path]
 })
-
+onUnmounted(beforeResolve)
 //
 const toMuchMenusFortest = Array(11)
   .fill(null)
   .map((_, i) => 'test' + i)
-console.log({ router, route, options: router.options.routes })
 </script>
 
 <style lang="scss" scoped>
