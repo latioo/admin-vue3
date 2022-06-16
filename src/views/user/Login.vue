@@ -67,11 +67,11 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 import logo from '../../assets/login/logo.svg'
 import { useRoute, useRouter } from 'vue-router'
-const formState = ref({
+const formState = reactive({
   username: 'admin',
   password: '123456',
   remember: true,
@@ -104,6 +104,9 @@ const onFinishFailed = (errorInfo) => {
   background-repeat: no-repeat;
   background-position: center 110px;
   background-size: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   .top {
     text-align: center;
     padding: 12px 0;

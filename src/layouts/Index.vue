@@ -1,6 +1,6 @@
 <template>
   <a-layout style="min-height: 100vh" has-sider>
-    <AsideBar v-if="!route.meta.noLayout" />
+    <AsideBar />
     <a-layout>
       <HeaderX />
       <TabsNav />
@@ -24,6 +24,4 @@ import AsideBar from './AsideBar.vue'
 import HeaderX from './HeaderX.vue'
 import TabsNav from './TabsNav.vue'
 import Setting from './Setting.vue'
-import { useRoute } from 'vue-router'
-const route = useRoute()
 </script>
