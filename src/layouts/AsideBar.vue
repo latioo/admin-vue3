@@ -3,7 +3,7 @@
     <div
       class="fixed-stuff"
       :style="{
-        width: menuCollapsed ? collapsedWidth : width,
+        width: realMenuWidth,
         overflow: 'hidden',
       }"
     ></div>
@@ -17,8 +17,8 @@
         top: 0,
         bottom: 0,
       }"
-      :collapsedWidth="collapsedWidth"
-      :width="width"
+      :collapsedWidth="collapsedMenuWidth"
+      :width="expandMenuWidth"
       :collapsed="menuCollapsed"
       :trigger="null"
       collapsible
@@ -36,13 +36,11 @@
           :key="item.path"
           @click="this.$router.push(item.path)"
         >
-          <component :is="item.icon"></component>
+          <component :is="item.icon" />
           <span>{{ item.name }}</span>
         </a-menu-item>
         <a-sub-menu key="sub1">
-          <template #icon>
-            <UploadOutlined />
-          </template>
+          <template #icon> </template>
           <template #title>Navigation Three</template>
           <a-menu-item
             v-for="item in toMuchMenusFortest"
@@ -59,15 +57,19 @@
 </template>
 
 <script setup>
-import { watch, onUnmounted } from 'vue'
-import { UploadOutlined } from '@ant-design/icons-vue'
+import { onUnmounted } from 'vue'
 import { routes } from '../router'
 import { useRouter } from 'vue-router'
 import { useStoreRefs } from '../store/layout'
-const [width, collapsedWidth] = ['208px', '48px']
 
 //
-const { menuCollapsed, selectedKeys } = useStoreRefs()
+const {
+  menuCollapsed,
+  selectedKeys,
+  expandMenuWidth,
+  collapsedMenuWidth,
+  realMenuWidth,
+} = useStoreRefs()
 const router = useRouter()
 
 selectedKeys.value = ['/']

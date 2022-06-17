@@ -5,11 +5,16 @@ export const useStore = defineStore('layout', {
         return {
             // 菜单
             menuCollapsed: false, // collapsed 坍塌
+            expandMenuWidth: '208px',
+            collapsedMenuWidth: '48px',
             selectedKeys: [],
             // tabs导航
             tabs: [],
             activeTab: '', // 这里和菜单区分开, 因为 tabs 和菜单可能不一致; 比如 :id 这种路由, 
         }
+    },
+    getters: {
+        realMenuWidth: (state) => state.menuCollapsed ? state.collapsedMenuWidth : state.expandMenuWidth,
     },
     actions: {
         toggleMenuCollapsed() {
