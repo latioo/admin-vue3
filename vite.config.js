@@ -25,7 +25,7 @@ export default ({ command }) => defineConfig({
     }),
     // https://www.npmjs.com/package/vite-plugin-mock
     viteMockServe({
-      mockPath: 'mock',
+      mockPath: 'src/mock',
       localEnabled: command === 'serve',
     }),
   ]

@@ -16,19 +16,4 @@ const compState = ref('')
 
 //
 const { testInput } = useStoreRefs()
-
-console.log({ testInput, store })
-console.log('111111111')
-</script>
-
-<script>
-import { defineStore, storeToRefs } from 'pinia'
-export const useStore2 = defineStore('formTest', {
-  state: () => {
-    return {
-      testInput: '',
-    }
-  },
-})
-console.log('222222')
 </script>

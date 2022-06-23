@@ -27,11 +27,14 @@
           <a-menu>
             <a-menu-item>
               <EditOutlined />
-              <a href="javascript:;">修改密码</a>
+              <a href="javascript:;" class="dropdown-item">修改密码</a>
             </a-menu-item>
+            <a-menu-divider />
             <a-menu-item>
               <LogoutOutlined />
-              <a href="javascript:;">退出登录</a>
+              <a href="javascript:;" @click="logout" class="dropdown-item"
+                >退出登录</a
+              >
             </a-menu-item>
           </a-menu>
         </template>
@@ -49,8 +52,11 @@ import {
   LogoutOutlined,
 } from '@ant-design/icons-vue'
 import { useStoreRefs, useStore } from '../store/layout'
+import { useStore as userStore } from '../views/user/login.store'
 const { menuCollapsed, realMenuWidth } = useStoreRefs()
 const toggle = useStore().toggleMenuCollapsed
+
+const { logout } = userStore()
 </script>
 
 <style lang="scss" scoped>
@@ -90,5 +96,10 @@ const toggle = useStore().toggleMenuCollapsed
 .username {
   font-size: 16px;
   padding-left: 6px;
+}
+
+.dropdown-item {
+  padding-left: 8px;
+  padding-right: 16px;
 }
 </style>

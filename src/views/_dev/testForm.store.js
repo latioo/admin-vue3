@@ -1,11 +1,11 @@
 import { defineStore, storeToRefs } from 'pinia'
 
 export const useStore = defineStore('formTest', {
-    state: () => {
-        return {
-            testInput: '',
-        }
-    },
+  state: () => {
+    return {
+      testInput: '',
+    }
+  },
 })
 
 export const useStoreRefs = () => storeToRefs(useStore())

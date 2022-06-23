@@ -25,7 +25,6 @@
             </template>
           </a-input>
         </a-form-item>
-
         <a-form-item
           name="password"
           :rules="[{ required: true, message: 'Please input your password!' }]"
@@ -70,7 +69,8 @@
 import { ref, reactive } from 'vue'
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 import logo from '../../assets/login/logo.svg'
-import { useRoute, useRouter } from 'vue-router'
+import { useStore } from './login.store'
+
 const formState = reactive({
   username: 'admin',
   password: '123456',
@@ -79,15 +79,11 @@ const formState = reactive({
 
 const loading = ref(false)
 
-const router = useRouter()
-const onFinish = (values) => {
-  console.log('Success:', values)
+const store = useStore()
+const onFinish = async (values) => {
   loading.value = true
-  setTimeout(() => {
-    router.replace('/', (x) => {
-      console.log({ x })
-    })
-  }, 500)
+  await store.login()
+  loading.value = false
 }
 
 const onFinishFailed = (errorInfo) => {
