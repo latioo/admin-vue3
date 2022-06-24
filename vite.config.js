@@ -6,27 +6,27 @@ import path from 'path'
 import { viteMockServe } from 'vite-plugin-mock'
 
 // https://vitejs.dev/config/
-export default ({ command }) => defineConfig({
-  resolve: {
-    alias: {
-      '@/': `${path.resolve(__dirname, 'src')}/`,
-    },
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
+export default ({ command }) =>
+  defineConfig({
+    resolve: {
+      alias: {
+        '@/': `${path.resolve(__dirname, 'src')}/`,
       },
     },
-  },
-  plugins: [
-    vue(),
-    Components({
-      resolvers: [AntDesignVueResolver()],
-    }),
-    // https://www.npmjs.com/package/vite-plugin-mock
-    viteMockServe({
-      mockPath: 'src/mock',
-      localEnabled: command === 'serve',
-    }),
-  ]
-})
+    css: {
+      preprocessorOptions: {
+        scss: {},
+      },
+    },
+    plugins: [
+      vue(),
+      Components({
+        resolvers: [AntDesignVueResolver()],
+      }),
+      // https://www.npmjs.com/package/vite-plugin-mock
+      viteMockServe({
+        mockPath: 'src/mock',
+        localEnabled: command === 'serve',
+      }),
+    ],
+  })

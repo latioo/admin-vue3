@@ -4,15 +4,12 @@
     <a-layout>
       <HeaderX />
       <TabsNav />
-      <a-layout-content
-        :style="{
-          margin: '24px 16px',
-          padding: '24px',
-          background: '#fff',
-          minHeight: '280px',
-        }"
-      >
-        <router-view></router-view>
+      <a-layout-content>
+        <router-view v-slot="{ Component }">
+          <transition name="fade">
+            <component :is="Component" />
+          </transition>
+        </router-view>
       </a-layout-content>
     </a-layout>
     <Setting />

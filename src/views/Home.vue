@@ -1,7 +1,17 @@
 <template>
-  <h1>home</h1>
+  <div class="layout-content-default">
+    <button @click="show = !show">Toggle</button>
+    <transition name="fade">
+      <p v-if="show">hello</p>
+    </transition>
+    <transition name="fade">
+      <p v-if="!show">world</p>
+    </transition>
+  </div>
 </template>
-<script setup></script>
-<!-- <script>
-export { UserOutlined as icon } from '@ant-design/icons-vue'
-</script> -->
+
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(true)
+</script>
