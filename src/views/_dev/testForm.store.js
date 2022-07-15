@@ -9,8 +9,7 @@ export const store = defineStore('formTest', {
   },
 })
 
-// export const storeRefs = () => storeToRefs(store(a(b())))
-export const storeRefs = compose(storeToRefs, store, a, b)
+export const storeRefs = () => storeToRefs(store)
 
 if (import.meta.hot)
   import.meta.hot.accept(acceptHMRUpdate(store, import.meta.hot))
