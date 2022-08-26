@@ -1,15 +1,13 @@
 import { defineStore, storeToRefs, acceptHMRUpdate } from 'pinia'
-import { compose } from 'ramda'
 
 export const store = defineStore('formTest', {
   state: () => {
     return {
-      testInput: '',
+      testInput: '1',
     }
   },
 })
 
-export const storeRefs = () => storeToRefs(store)
+export const storeRefs = () => storeToRefs(store())
 
-if (import.meta.hot)
-  import.meta.hot.accept(acceptHMRUpdate(store, import.meta.hot))
+if (import.meta.hot) import.meta.hot.accept(acceptHMRUpdate(store, import.meta.hot))

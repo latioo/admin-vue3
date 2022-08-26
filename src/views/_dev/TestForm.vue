@@ -10,11 +10,12 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-import { storeRefs } from './testForm.store'
+import { storeRefs, store } from './testForm.store'
 // 组件 state
 const compState = ref('')
 
 //
 const { testInput } = storeRefs()
-console.log({ testInput })
+
+console.log({ testInput, store })
 </script>
