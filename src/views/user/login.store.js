@@ -21,7 +21,7 @@ export const useStore = defineStore('login', {
     },
     logout() {
       axios.post('api/user/logout')
-      this.router.replace('/login')
+      this.router.replace(`/login?link=${location.href}`)
     },
   },
 })

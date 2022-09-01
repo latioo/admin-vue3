@@ -5,7 +5,16 @@
 
 <script setup>
 import Layout from './layouts/Index.vue'
+import { useRouter } from 'vue-router'
+import { useStore } from './store/layout'
 import { useRoute } from 'vue-router'
 const route = useRoute()
-// console.log({ route })
+const router = useRouter()
+const { addTab } = useStore()
+
+router.beforeResolve((route) => {
+  const { path, name } = route
+  addTab({ path, name })
+  // console.log({ path, name })
+})
 </script>

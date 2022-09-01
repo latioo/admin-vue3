@@ -8,12 +8,7 @@
       <div class="desc">whatever desc</div>
     </div>
     <div class="main">
-      <a-form
-        :model="formState"
-        name="normal_login"
-        @finish="onFinish"
-        @finishFailed="onFinishFailed"
-      >
+      <a-form :model="formState" name="normal_login" @finish="onFinish" @finishFailed="onFinishFailed">
         <a-form-item
           placeholder="Username"
           name="username"
@@ -25,15 +20,8 @@
             </template>
           </a-input>
         </a-form-item>
-        <a-form-item
-          name="password"
-          :rules="[{ required: true, message: 'Please input your password!' }]"
-        >
-          <a-input-password
-            placeholder="Password"
-            autocomplete="off"
-            v-model:value="formState.password"
-          >
+        <a-form-item name="password" :rules="[{ required: true, message: 'Please input your password!' }]">
+          <a-input-password placeholder="Password" autocomplete="off" v-model:value="formState.password">
             <template #prefix>
               <LockOutlined class="site-form-item-icon" />
             </template>
@@ -41,20 +29,12 @@
         </a-form-item>
         <div class="login-form-wrap">
           <a-form-item name="remember" no-style>
-            <a-checkbox v-model:checked="formState.remember"
-              >Remember me</a-checkbox
-            >
+            <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
           </a-form-item>
           <a class="login-form-forgot" href="">Forgot password</a>
         </div>
         <a-form-item>
-          <a-button
-            type="primary"
-            size="large"
-            html-type="submit"
-            class="login-form-button"
-            :loading="loading"
-          >
+          <a-button type="primary" size="large" html-type="submit" class="login-form-button" :loading="loading">
             Log in
           </a-button>
           Or

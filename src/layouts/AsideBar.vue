@@ -24,18 +24,8 @@
       collapsible
     >
       <div class="logo">logo</div>
-      <a-menu
-        :selectedKeys="selectedKeys"
-        :selectable="false"
-        theme="dark"
-        mode="inline"
-      >
-        <a-menu-item
-          v-for="item in routes"
-          :index="item.path"
-          :key="item.path"
-          @click="this.$router.push(item.path)"
-        >
+      <a-menu :selectedKeys="selectedKeys" :selectable="false" theme="dark" mode="inline">
+        <a-menu-item v-for="item in routes" :index="item.path" :key="item.path" @click="this.$router.push(item.path)">
           <component :is="item.icon" />
           <span>{{ item.name }}</span>
         </a-menu-item>
@@ -63,22 +53,15 @@ import { useRouter } from 'vue-router'
 import { useStoreRefs } from '../store/layout'
 
 //
-const {
-  menuCollapsed,
-  selectedKeys,
-  expandMenuWidth,
-  collapsedMenuWidth,
-  realMenuWidth,
-} = useStoreRefs()
+const { menuCollapsed, selectedKeys, expandMenuWidth, collapsedMenuWidth, realMenuWidth } = useStoreRefs()
 const router = useRouter()
 
-selectedKeys.value = ['/']
-const beforeResolve = router.beforeResolve((route) => {
-  // console.log({ route })
-  const { path } = route
-  selectedKeys.value = [path]
-})
-onUnmounted(beforeResolve)
+// const beforeResolve = router.beforeResolve((route) => {
+//   // console.log({ route })
+//   const { path } = route
+//   selectedKeys.value = [path]
+// })
+// onUnmounted(beforeResolve)
 //
 const toMuchMenusFortest = Array(11)
   .fill(null)
