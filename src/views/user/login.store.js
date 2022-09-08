@@ -14,14 +14,16 @@ export const useStore = defineStore('login', {
       //   console.log({ data })
       try {
         const res = await axios.post('api/user/login')
-        this.router.replace('/')
+
+        const redirect = this.router.currentRoute.value.query?.link
+        this.router.replace(redirect || '/')
       } catch (e) {
         message.warn(e?.message || '系统繁忙')
       }
     },
     logout() {
       axios.post('api/user/logout')
-      this.router.replace(`/login?link=${location.href}`)
+      this.router.replace({ path: '/login', query: { link: location.href } })
     },
   },
 })

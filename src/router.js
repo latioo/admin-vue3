@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Page1 from './views/Page1.vue'
 import Home from './views/Home.vue'
 import TestForm from './views/_dev/TestForm.vue'
@@ -23,6 +23,6 @@ const devMenus = [
 
 export const routes = [...menus, ...devMenus]
 export const router = createRouter({
-  history: createWebHashHistory(), // createWebHashHistory createWebHistory
+  history: createWebHistory(),
   routes,
 })
