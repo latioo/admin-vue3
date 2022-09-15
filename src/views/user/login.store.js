@@ -16,7 +16,8 @@ export const useStore = defineStore('login', {
         const res = await axios.post('api/user/login')
 
         const redirect = this.router.currentRoute.value.query?.link
-        this.router.replace(redirect || '/')
+        if (redirect) location.href = redirect
+        else this.router.replace('/')
       } catch (e) {
         message.warn(e?.message || '系统繁忙')
       }

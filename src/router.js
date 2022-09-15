@@ -4,7 +4,6 @@ import Home from './views/Home.vue'
 import TestForm from './views/_dev/TestForm.vue'
 import DevTable from './views/_dev/DevTable.vue'
 import DragBord from './views/_dev/DragBord.vue'
-import DragBord2 from './views/_dev/DragBord2.vue'
 import Login from './views/user/Login.vue'
 import { UserOutlined, VideoCameraOutlined, FormOutlined, TableOutlined } from '@ant-design/icons-vue'
 
@@ -18,7 +17,6 @@ const devMenus = [
   { path: '/dev-table', name: '查询表格', icon: TableOutlined, component: DevTable },
   // -- 可配置看板
   { path: '/drag-bord', name: '看板1', icon: TableOutlined, component: DragBord },
-  { path: '/drag-bord2', name: '看板-chart', icon: TableOutlined, component: DragBord2 },
 ]
 
 export const routes = [...menus, ...devMenus]
