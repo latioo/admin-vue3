@@ -25,7 +25,7 @@
     >
       <div class="logo">logo</div>
       <a-menu :selectedKeys="selectedKeys" :selectable="false" theme="dark" mode="inline">
-        <a-menu-item v-for="item in routes" :index="item.path" :key="item.path" @click="this.$router.push(item.path)">
+        <a-menu-item v-for="item in routes" :index="item.path" :key="item.path" @click="router.push(item.path)">
           <component :is="item.icon" />
           <span>{{ item.name }}</span>
         </a-menu-item>
